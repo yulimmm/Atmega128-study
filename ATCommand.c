@@ -55,11 +55,11 @@ int main(void)
 // 	_delay_ms(100);
 // 	UART1_string_receive(temp);
 	
- 	UART1_string_transmit("AT+CWMODE=3\r\n");  //wifi mode 설정
+ 	UART1_string_transmit("AT+CWMODE=1\r\n");  //wifi mode 설정
 	UART1_string_receive(temp);
 	_delay_ms(5000);
  	
- 	UART1_string_transmit("AT+CWJAP=\"TP-Link_B9D0\",\"06312275\"\r\n");  //wifi 연결
+ 	UART1_string_transmit("AT+CWJAP=\"<와이파이 이름>\",\"<비밀번호>\"\r\n");  //wifi 연결
 	UART1_string_receive(temp);
 	_delay_ms(5000);
  	
@@ -67,11 +67,14 @@ int main(void)
  	UART1_string_receive(temp);
 	 _delay_ms(5000);
 	 
- 	UART1_string_transmit("AT+CIPSEND=133\r\n"); //보내는 문자 길이 133
+ 	UART1_string_transmit("AT+CIPSEND=138\r\n"); //보내는 문자 길이 133
 	UART1_string_receive(temp);
 	_delay_ms(5000);
  	
- 	UART1_string_transmit("GET /data/2.5/weather?id=1835848&appid=b154f4f2fefe7862a10432af6e2b4dbd HTTP/1.1\r\nHost: api.openweathermap.org\r\nConnection: keep-alive\r\n\r\n"); 
+	UART1_string_transmit("GET /data/2.5/weather?id=1835848&units=metric&APPID=<키 넘버>\r\n"); //133
+	UART1_string_transmit("Host: api.openweathermap.org\r\n"); 
+	UART1_string_transmit("User-Agent: ArduinoWiFi/1.1\r\n");
+	UART1_string_transmit("Connection: close\r\n\r\n"); //138
 	UART1_string_receive(temp);
 	_delay_ms(5000);
 	
