@@ -107,8 +107,7 @@ int main(void)
 	UART1_string_receive(temp);
 	_delay_ms(5000);
 	
-	UART1_string_transmit("AT+CWJAP=\"Takeout1_2.4G\",\"takeout0503\"\r\n");
-	//UART1_string_transmit("AT+CWJAP=\"TP-Link_B9D0\",\"06312275\"\r\n");  //wifi 연결
+	UART1_string_transmit("AT+CWJAP=\"와이파이 이름\",\"비밀번호\"\r\n");  //wifi 연결
 	UART1_string_receive(temp);
 	_delay_ms(5000);
 	
